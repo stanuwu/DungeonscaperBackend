@@ -1,3 +1,23 @@
 ###
 
 GET http://localhost:3000/test
+
+###
+
+GET http://localhost:3000/user/get
+Content-Type: application/json
+
+{
+  "name": "Stan"
+}
+
+###
+
+GET http://localhost:3000/user/session
+Content-Type: application/json
+
+{
+  "name": "Stan's Room",
+  "description": "This is a test description.",
+  "owner": "197634065590671591796819593356101287936"
+}

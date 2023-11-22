@@ -7,6 +7,7 @@ import cors from 'cors';
 import 'colorts/lib/string';
 
 import TestRoute from './routes/TestRoute';
+import UserRoute from './routes/UserRoute';
 
 import ErrorHandler from './middleware/ErrorHandler';
 
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, '/../public')));
 
 app.use(express.json());
 app.use('/test', TestRoute);
+app.use('/user', UserRoute);
 
 app.use(ErrorHandler.notFound);
 app.use(ErrorHandler.handleError);

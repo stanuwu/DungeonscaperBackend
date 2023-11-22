@@ -2,18 +2,15 @@ import * as crypto from 'crypto';
 
 export default class UserUtil {
     public static cleanName(name: string): string {
-        // implement string cleaning here
-        return name;
+        return name.replace('[^[A-Za-z0-9\\,\\.\\-\\_\\:\\\'\\ \\(\\)\\"\\!]]', '');
     }
 
     public static makeUserId(name: string, ip: string): string {
-        const random: number = Math.random();
-        return `${UserUtil.stringHash(ip) ^ UserUtil.stringHash(name) ^ random}`;
+        return `${BigInt(UserUtil.stringHash(ip)) ^ BigInt(UserUtil.stringHash(name))}`;
     }
 
     public static makeSessionId(name: string, ownerId: string): string {
-        const random: number = Math.random();
-        return `${UserUtil.stringHash(name) ^ UserUtil.stringHash(ownerId) ^ random}`;
+        return `${BigInt(UserUtil.stringHash(name)) ^ BigInt(UserUtil.stringHash(ownerId))}`;
     }
 
     public static stringHash(value: string): number {
