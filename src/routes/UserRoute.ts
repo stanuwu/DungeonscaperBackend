@@ -4,8 +4,8 @@ import UserController from '../controllers/UserController';
 
 const router = Router();
 
-router.get('/get', UserController.getUser);
+router.post('/get', UserController.getUser);
 
-router.get('/session', UserController.createSession);
+router.post('/session', UserController.createSession);
 
 export default router;

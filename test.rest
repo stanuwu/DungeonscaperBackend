@@ -4,7 +4,7 @@ GET http://localhost:3000/test
 
 ###
 
-GET http://localhost:3000/user/get
+POST http://localhost:3000/user/get
 Content-Type: application/json
 
 {
@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/user/session
+POST http://localhost:3000/user/session
 Content-Type: application/json
 
 {
