@@ -17,4 +17,15 @@ export default class UserModel {
         const session: ServerSession | undefined = UserManager.Instance.getSession(UserUtil.makeSessionId(name, owner));
         return session ? session.getData() : UserManager.Instance.createSession(name, description, owner).getData();
     }
+
+    public static joinSession(identifier: string, userid: string): ApiSession | undefined {
+        const user: ServerUser | undefined = UserManager.Instance.getUser(userid);
+        if (!user) return undefined;
+        const session: ServerSession | undefined = UserManager.Instance.getSession(identifier);
+        if (session) {
+            session.addUser(user);
+            return session.getData();
+        }
+        return undefined;
+    }
 }

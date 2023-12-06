@@ -15,9 +15,14 @@ Content-Type: application/json
 
 POST http://localhost:3000/user/session
 Content-Type: application/json
+Authorization: 197634065590671591796819593356101287936
 
 {
   "name": "Stan's Room",
-  "description": "This is a test description.",
-  "owner": "197634065590671591796819593356101287936"
+  "description": "This is a test description."
 }
+
+###
+
+GET http://localhost:3000/user/join/170021220928611639789076457518060797952
+Authorization: 197634065590671591796819593356101287936

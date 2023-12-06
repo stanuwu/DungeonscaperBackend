@@ -11,10 +11,22 @@ export default class UserController {
         const session: ApiSession | undefined = UserModel.makeSession(
             req.body.name,
             req.body.description,
-            req.body.owner,
+            req.headers.authorization!,
         );
         if (!session) {
             res.status(400).send('Invalid Owner');
+        } else {
+            res.json(session).status(200);
+        }
+    }
+
+    public static joinSession(req: Request, res: Response): void {
+        const session: ApiSession | undefined = UserModel.joinSession(
+            req.params.identifier,
+            req.headers.authorization!,
+        );
+        if (!session) {
+            res.status(400).send('Invalid Session');
         } else {
             res.json(session).status(200);
         }

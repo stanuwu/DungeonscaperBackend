@@ -8,4 +8,6 @@ router.post('/get', UserController.getUser);
 
 router.post('/session', UserController.createSession);
 
+router.get('/join/:identifier', UserController.joinSession);
+
 export default router;
