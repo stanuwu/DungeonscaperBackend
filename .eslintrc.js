@@ -14,6 +14,8 @@ module.exports = {
         'implicit-arrow-linebreak': 0,
         'function-paren-newline': 0,
         'no-bitwise': 0,
+        'no-param-reassign': 0,
+        'class-methods-use-this': 0,
         indent: ['error', 4],
     },
     root: true,

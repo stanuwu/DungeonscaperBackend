@@ -15,7 +15,14 @@ export default class UserModel {
         const user: ServerUser | undefined = UserManager.Instance.getUser(owner);
         if (!user) return undefined;
         const session: ServerSession | undefined = UserManager.Instance.getSession(UserUtil.makeSessionId(name, owner));
-        return session ? session.getData() : UserManager.Instance.createSession(name, description, owner).getData();
+        if (session !== undefined) {
+            user.setSession(session);
+            return session.getData();
+        }
+        
+        const sn = UserManager.Instance.createSession(name, description, owner);
+        user.setSession(sn);
+        return sn.getData();
     }
 
     public static joinSession(identifier: string, userid: string): ApiSession | undefined {
@@ -24,6 +31,7 @@ export default class UserModel {
         const session: ServerSession | undefined = UserManager.Instance.getSession(identifier);
         if (session) {
             session.addUser(user);
+            user.setSession(session);
             return session.getData();
         }
         return undefined;

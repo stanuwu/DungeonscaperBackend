@@ -46,10 +46,7 @@ export default class UserManager {
         const cleanDesc: string = UserUtil.cleanName(description);
         const id: string = UserUtil.makeSessionId(cleanName, owner);
 
-        // add websockets here
-        const ws: string = 'N/A';
-
-        const data: ApiSession = new ApiSession(cleanName, cleanDesc, id, owner, ws);
+        const data: ApiSession = new ApiSession(cleanName, cleanDesc, id, owner);
         const session: ServerSession = new ServerSession(data);
         this.addSession(session);
         return session;

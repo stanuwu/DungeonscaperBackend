@@ -11,6 +11,8 @@ import UserRoute from './routes/UserRoute';
 
 import ErrorHandler from './middleware/ErrorHandler';
 
+import SocketManager from "./network/SocketManager";
+
 dotenv.config();
 
 const app = express();
@@ -31,4 +33,5 @@ app.use(ErrorHandler.handleError);
 const PORT = process.env.PORT ?? 5000;
 console.log(`Server is listening on port ${PORT}!`.cyan);
 
+SocketManager.Instance.StartListen(Number(PORT));
 app.listen(PORT);
