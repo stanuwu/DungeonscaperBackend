@@ -5,7 +5,7 @@ import UserManager from './UserManager';
 export default class ServerSession {
     private data: ApiSession;
 
-    private members: Map<string, ServerUser>;
+    public members: Map<string, ServerUser>;
 
     constructor(data: ApiSession) {
         this.data = data;

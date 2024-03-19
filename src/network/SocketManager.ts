@@ -46,6 +46,16 @@ export default class SocketManager {
         // Handle Kick User
         socket.on('kickUser', (id: number) => SocketManager.Instance.KickUser(id, socket));
 
+        // Handle Rolls
+        socket.on('roll', (roll) => {
+            const user = UserManager.Instance.getUser(socket.data.auth);
+            if (user !== undefined && user.getSession() !== undefined) {
+                for (const member of user.getSession()!.members.values()) {
+                    member.getSocket()!.emit('roll', roll);
+                }
+            }
+        });
+
         // Handle Test
         socket.on('test', () => console.log("Socket Test"));
 
